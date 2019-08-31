@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/default}">
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+<!-- /* Content of this page will be decorated by the elements of layout.html (task/layout) */ -->
+<div layout:fragment="content">
+    <div class="mdl-grid">
+        <div class="mdl-grid mdl-shadow--4dp">
+
+            <form action="#" th:action="@{/}" method="POST" th:object="${search}">
+                   <div th:replace="packages/packages-fields :: fields"></div>
+                <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <button type="submit" th:text="#{commons.search}"
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Search</button>
+                </div>
+            </form>
+            <table	class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+                <thead>
+                <tr>
+                    <th th:text="#{document.id}">Id</th>
+                    <th th:text="#{document.nrPelny}" class="mdl-data-table__cell--non-numeric">NR</th>
+                    <th th:text="#{document.tytul}" class="mdl-data-table__cell--non-numeric">Tytuł</th>
+                    <th th:text="#{document.nrPaczek}" style="max-width: 200px;" class="mdl-data-table__cell--non-numeric">Nr paczek</th>
+                    <th th:text="#{document.dataWystawienia}" class="mdl-data-table__cell--non-numeric">Data Wystawienia</th>
+                    <th th:text="#{document.dataPlatnosci}" class="mdl-data-table__cell--non-numeric">Data Platnosci</th>
+                    <th th:text="#{document.staraDataPlatnosci}" class="mdl-data-table__cell--non-numeric">Stara Data Platnosci</th>
+                    <th th:text="#{document.dni}" class="mdl-data-table__cell--non-numeric">Dni</th>
+                </tr>
+                </thead>
+                <tbody th:each="document : ${documents}">
+                <tr>
+                    <td class="id" th:style="${document.dni != null ?  'background:  lightgreen' : 'background:  crimson'}"   th:text="${document.id}">id</td>
+                    <td class="mdl-data-table__cell--non-numeric" th:text="${document.nrPelny}">Nr pełny</td>
+                    <td class="mdl-data-table__cell--non-numeric" th:text="${document.tytul}">Tytul</td>
+                   <!-- <td class="mdl-data-table__cell&#45;&#45;non-numeric" style="word-wrap: break-word;" th:text="${document.uwagi}">Uwagi</td>-->
+           <!--         <td class="mdl-data-table__cell&#45;&#45;non-numeric" style="word-wrap: break-word;" th:text="${document.nrPaczek}">Nr Paczek</td>-->
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <th></th>
+                                <th>NR</th>
+                                <th>Data</th>
+                            </tr>
+                            <tr th:each="paczka : ${document.nrPaczek}">
+                                <td th:text="${paczka.key}"></td>
+                                <td th:text="${paczka.value}" style="max-width: 300px;"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric" th:text="${#temporals.format(document.dataWystawienia, 'yyyy-MM-dd')}">Data Wystawienia</td>
+                    <td class="mdl-data-table__cell--non-numeric"  th:text="${#temporals.format(document.dataPlatnosci, 'yyyy-MM-dd')}">Data Platnosci</td>
+                    <td class="mdl-data-table__cell--non-numeric"  th:text="${#temporals.format(document.staraDataPlatnosci, 'yyyy-MM-dd')}">Stara Data Platnosci</td>
+                    <td class="mdl-data-table__cell--non-numeric" th:text="${document.dni}">Dni</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

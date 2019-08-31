@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Insert_GT Poczta Extension</title>
+        <!--     <meta name="_csrf" th:content="${_csrf.token}"/> -->
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="/webjars/material-design-lite/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href="/webjars/material-design-lite/material.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/webjars/getmdl-select/getmdl-select.min.css">
+        <script defer src="/webjars/getmdl-select/getmdl-select.min.js"></script>
+        <style>
+            .card-container {
+                display: flex;
+                /* 	  align-items: center; */
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <!--/* Standard layout can be mixed with Layout Dialect */-->
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <div th:replace="fragments/header"></div>
+            <main class="mdl-layout__content">
+                <div layout:fragment="content">
+                </div>
+            </main>
+            <div th:replace="fragments/footer :: footer"></div>
+        </div>
+    </body>
+</html>

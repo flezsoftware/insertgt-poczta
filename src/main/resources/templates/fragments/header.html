@@ -1,0 +1,16 @@
+<header class="mdl-layout__header mdl-layout__header--scroll" th:fragment="header">
+    <div class="mdl-layout__header-row">
+        <!-- Title -->
+
+        <span class="mdl-layout-title" th:text="#{app.name}">Aplikacja</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+      <!--  <img src="https://www.worldremit.com/images/logo.svg"/>-->
+        <!-- Navigation -->
+        <!-- <div th:replace="fragments/navigation :: navigation"></div>-->
+    </div>
+</header>
+<div class="mdl-layout__drawer">
+    <span class="mdl-layout-title" th:text="#{app.name}">Aplikacja</span>
+    <!--<div th:replace="fragments/navigation :: navigation"></div>-->
+</div>

@@ -1,0 +1,19 @@
+<div th:fragment="fields">
+    <div class="mdl-grid" > <!-- mdl-grid mdl-shadow--4dp" -->
+        <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input type="text" th:field="*{pattern}" class="mdl-textfield__input">
+            <label th:for="${#ids.next('pattern')}" th:text="#{search.pattern}" class="mdl-textfield__label"></label>
+            <span th:if="${#fields.hasErrors('pattern')}" th:errors="*{pattern}">Nie puste</span>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label th:for="${#ids.next('fromDate')}" th:text="#{search.fromDate}" class="mdl-textfield__label"></label>
+            <input type="date" th:field="*{fromDate}" class="mdl-textfield__input">
+            <span th:if="${#fields.hasErrors('fromDate')}" th:errors="*{fromDate}">Nie puste</span>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label th:for="${#ids.next('toDate')}" th:text="#{search.toDate}" class="mdl-textfield__label"></label>
+            <input type="date" th:field="*{toDate}" class="mdl-textfield__input">
+            <span th:if="${#fields.hasErrors('toDate')}" th:errors="*{toDate}">Nie puste</span>
+        </div>
+    </div>
+</div>
